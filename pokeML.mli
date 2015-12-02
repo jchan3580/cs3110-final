@@ -1,15 +1,15 @@
-(*the type of the pokeML*)
-type 'a pokeML
+(*the attributes a pokeML has *)
+type attributes
 
 (*the moves a pokeML knows*)
-type 'a moves
+type move
 
-(*the attributes of a pokeML*)
-type 'a attributes
+(*the type of the pokeML*)
+type pokeML
 
 (*uses a move on another pokeML*)
-val use_move : 'a move -> 'a pokeML
+val use_move : move -> pokeML
 
 (*increases a pokeML's abilities*)
-val level : 'a attributes -> 'b attributes
+val level : attributes -> attributes
 
