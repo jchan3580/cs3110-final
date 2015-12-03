@@ -111,8 +111,70 @@ module RM = struct
 
 end
 
+(* units registry, by id and by loc *)
+module E = struct
+  type id = int
+  module Mi = Map.Make (struct type t = id let compare = compare end)
+  module Ml = Map.Make (struct type t = loc let compare = compare end)
+  type t = {id: Unit.t Mi.t; at: (id list) Ml.t}
+
+  let empty = {id = Mi.empty; at = Ml.empty}
+
+  let id i d = if (Mi.mem i d.id) then Some (Mi.find i d.id) else None
+  let ids_at loc d = if (Ml.mem loc d.at) then (Ml.find loc d.at) else []
+  let at loc d = List.fold_left (fun acc i -> match id i d with Some u -> u::acc | _ -> acc) [] (ids_at loc d)
+  let occupied loc d = Ml.mem loc d.at
+
+  (* list of units uu collides with (they occupy the same loc) *)
+  let collisions uu d =
+    List.fold_left
+      (fun acc i -> match id i d with Some u when u.Unit.id <> uu.Unit.id -> u::acc | _ -> acc)
+      [] (ids_at uu.Unit.loc d)
+  (* including neighbors *)
+  let collisions_nb uu d =
+    let loc = uu.Unit.loc in
+    List.fold_left (fun acc1 loc ->
+      List.fold_left
+        (fun acc2 i -> match id i d with Some u when u.Unit.id <> uu.Unit.id -> u::acc2 | _ -> acc2)
+        acc1 (ids_at loc d)
+    ) [] [loc; loc ++ (1,0); loc ++ (-1,0); loc ++ (0,1); loc ++ (0,-1)]
+
+  let collisions_nb_vec vec d =
+    let loc = loc_of_vec vec in
+    List.fold_left (fun acc1 loc ->
+      List.fold_left
+        (fun acc2 i -> match id i d with Some u -> u::acc2 | _ -> acc2)
+        acc1 (ids_at loc d)
+    ) [] [loc; loc ++ (1,0); loc ++ (-1,0); loc ++ (0,1); loc ++ (0,-1)]
+
+  let rm ru d =
+    let i = ru.Unit.id in
+    match id i d with
+    | Some u ->
+        let loc = u.Unit.loc in
+        let d_id = Mi.remove i d.id in
+        let d_at =
+        ( match List.filter ((<>)i) (ids_at loc d) with
+          | [] -> Ml.remove loc d.at
+          | ls -> Ml.add loc ls d.at ) in
+        {id=d_id; at=d_at}
+    | None -> d
+
+  let upd u d =
+    let d1 = rm u d in
+    let i = u.Unit.id in
+    let loc = u.Unit.loc in
+    let d2_at = Ml.add loc (i :: ids_at loc d1) d1.at in
+    let d2_id = Mi.add i u d1.id in
+    {at = d2_at; id = d2_id}
+
+  let iter f d = Mi.iter (fun k u -> f u) d.id
+
+  let fold f acc d = Mi.fold (fun k u acc -> f acc u) d.id acc
+end
+
 (* Region module *)
-module R = struct
+module Reg = struct
   (* active objects *)
   module Zone = struct
     type label = string
@@ -128,8 +190,8 @@ module R = struct
     rid: region_id;
     a: Tile.t Area.t;
     loc0: loc;
-(*     e: E.t;
- *)    explored: (Tile.t option) Area.t;
+    e: E.t;
+    explored: (Tile.t option) Area.t;
 (*     optinv: (Inv.t option) Area.t;
  *)    zones: Zone.t;
     obj: Obj.t;}
@@ -152,7 +214,8 @@ module Prio = struct
     {ml=Ml.empty; rank=[]}
 
   let upd r pl =
-    if Ml.mem r.R.rid pl.ml then {pl with ml = Ml.add r.R.rid r pl.ml} else pl
+    if Ml.mem r.Reg.rid pl.ml then
+    {pl with ml = Ml.add r.Reg.rid r pl.ml} else pl
 
   let get rid pl =
     if Ml.mem rid pl.ml then Some (Ml.find rid pl.ml) else None
@@ -164,7 +227,7 @@ module G = struct
   (* maps edge type to smthing *)
   module Me = Map.Make(struct type t = edge_type let compare = compare end)
   type geo = {currid : region_id; loc: region_loc array; rm: RM.t array;
-   nb: (region_id Me.t) array; prio: R.t Prio.t}
+   nb: (region_id Me.t) array; prio: Reg.t Prio.t}
 
   let length g = Array.length g.rm
 
@@ -295,7 +358,7 @@ module Atlas = struct
   let update_generic comp_func pol geo atlas =
     let currid = geo.G.currid in
     let visible = comp_func currid geo in
-    (* update teh rmpoint array *)
+    (* update the rmpoint array *)
     Mrid.iter (fun rid _ ->
       atlas.rmp.(rid) <-
         Some {rid=rid; rloc = geo.G.loc.(rid); biome = geo.G.rm.(rid).RM.biome;}
@@ -325,6 +388,7 @@ module Atlas = struct
   let make pol geo =
     let rmnum = Array.length geo.G.rm in
     let rmp = Array.make rmnum None in
-    update pol geo {rmp; visible = Mrid.empty; currid = 0; curloc = (0,(0,0)); mountains = Srloc.empty}
+    update pol geo {rmp; visible = Mrid.empty; currid = 0; curloc = (0,(0,0));
+         mountains = Srloc.empty}
 
 end
