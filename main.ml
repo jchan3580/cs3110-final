@@ -9,9 +9,9 @@ open Video
 open Window
 open Timer
 open Event
-(*
+
 open SDLGL
-open Draw *)
+open Draw
 open Glcaml
 
 open View
@@ -30,6 +30,7 @@ let other_inputs ctrl key g s =
       match ch with
       | 'e' -> g Msg.Eat
       | 'i' -> g Msg.OpenInventory
+      | 'm' -> g Msg.Atlas
       | 'r' -> g Msg.Rest
       | 'q' -> g Msg.Cancel
       | 'u' -> g Msg.Use
