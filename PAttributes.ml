@@ -1,10 +1,10 @@
 (*Creates a new player type, containing the exp, inventory, and pokeML*)
-type player = {hunger: int; thirst: int; xp: int; level: int;
+type player = {hunger: int ref; thirst: int ref; xp: int; level: int;
   inventory: item list; pokeML: pokeML list}
 
 (*Increases the experience of a player*)
 let gain_xp player xp : player =
-  {hunger=player.hunger; thirst=player.thirst; xp=(player.xp + xp);
+  {hunger= !player.hunger; thirst= !player.thirst; xp=(player.xp + xp);
   level=(level_calc (player.xp + xp)); inventory=player.inventory; pokeML=player.pokeML}
 
 (*Takes in the experience of the player and computes the level*)
