@@ -7,8 +7,8 @@ type move
 (*the type of the pokeML*)
 type pokeML
 
-(*uses a move on another pokeML*)
-val use_move : move -> pokeML
+(*uses a pokeML ability*)
+val use_ability : pokeML -> unit
 
 (*increases a pokeML's abilities*)
 val level : attributes -> attributes

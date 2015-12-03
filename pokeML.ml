@@ -16,7 +16,12 @@ type pokeML = {name:string;
                attributes: attributes;
                special: string;}
 
-let use_move asd = failwith "none"
+let use_ability poke =
+  match poke.special with
+  | "fire" -> ()
+  | "water" -> ()
+  | "earth" -> ()
+  | "air" -> ()
 
 let level attr =
   {level=attr.level+1;
