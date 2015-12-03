@@ -1,6 +1,16 @@
+open Global
+open Inv
+open Items
+
 (*Creates a new player type, containing the exp, inventory, and pokeML*)
-type player = {hunger: int ref; thirst: int ref; xp: int; level: int;
-  inventory: item list; pokeML: pokeML list}
+type player = {
+  faction: Tile.faction;
+  hunger: int ref;
+  thirst: int ref;
+  xp: int;
+  level: int;
+  inventory: Inv.t;
+  pokeML: pokeML list}
 
 (*Increases the experience of a player*)
 let gain_xp player xp : player =
