@@ -1,5 +1,5 @@
 open PAttributes
-open pActions
+open PActions
 open Battle
 open Items
 open PokeML
