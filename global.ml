@@ -74,13 +74,13 @@ and action =
   | OperateObj of (loc * op_obj_type)
 
 (* faction specialization *)
-type fac_spec = Humanoid | Domestic | Pokeml
+type fac_spec = Human | Domestic | Pokeml
 
 module Species = struct
   type genus =
     | Hum
     | Cow | Horse
-    | Pokeml
+    | Pokeml of PokeML.pokeML
 
   type t = genus * int
 
@@ -89,24 +89,36 @@ module Species = struct
   let xmass = function
     | Cow, _ -> 3.0
     | Horse, _ -> 2.5
-    | Pokeml, _ -> 3.0
+    | Pokeml, _ -> 2.0
     | _ -> 1.0
 
   let xathletic = function
     | Cow, _ -> 2.0
     | Horse, _ -> 2.0
-    | Pokeml, _ -> 3.0
+    | Pokeml, _ -> 1.5
     | _ -> 1.0
 
-(*   let def_inv = function
+  let def_inv = function
     | Hum, _ -> Inv.default
     | Cow, _ | Horse, _ -> Inv.animal
-    | Pokeml, _ -> Inv.pokeml *)
+    | Pokeml, _ -> Inv.pokeml
+end
+
+module Unit = struct
+  module Core = struct
+    type t = {
+      fac: faction;
+      sp: Species.t;
+      hp: (int * int);
+      prop: properties;
+      inv: Inv.t;
+    }
+  end
 end
 
 (* Region meta info *)
 module RM = struct
-  type biome = Sea | Beach | Plains
+  type biome = Water | Plains | Forest | DeepForest
   type t = {biome:biome; altitude:int;}
 
 end
@@ -116,7 +128,7 @@ module E = struct
   type id = int
   module Mi = Map.Make (struct type t = id let compare = compare end)
   module Ml = Map.Make (struct type t = loc let compare = compare end)
-  type t = {id: Unit.t Mi.t; at: (id list) Ml.t}
+  type t = {id: PAttributes.player Mi.t; at: (id list) Ml.t}
 
   let empty = {id = Mi.empty; at = Ml.empty}
 
@@ -126,7 +138,7 @@ module E = struct
   let occupied loc d = Ml.mem loc d.at
 
   (* list of units uu collides with (they occupy the same loc) *)
-  let collisions uu d =
+  let collisions player d =
     List.fold_left
       (fun acc i -> match id i d with Some u when u.Unit.id <> uu.Unit.id -> u::acc | _ -> acc)
       [] (ids_at uu.Unit.loc d)
