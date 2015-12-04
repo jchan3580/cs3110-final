@@ -1,4 +1,5 @@
-type food = | Raw Meat | Cooked Meat | Burnt Meat | Salad | Coconut | Stir Fry
+type food = | Raw Meat | Cooked Meat | Burnt Meat
+| Salad | Coconut | Stir Fry | Water | Clean Water
 
 type item = {name: string; description: string; quantity: int ref;
              consumable: food option}
