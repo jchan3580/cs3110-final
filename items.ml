@@ -4,6 +4,9 @@ type food = | Raw Meat | Cooked Meat | Burnt Meat
 type item = {name: string; description: string; quantity: int ref;
              consumable: food option}
 
+let get_consume item =
+  item.consumable
+
 let cook item =
   match item.name with
   | "raw meat" -> print_string "Successfully cooked a piece of meat!";

@@ -1,6 +1,7 @@
 type attributes = {level:int;
                    experience:int;
                    hp:(int*int);
+                   c_hp:int;
                    att:(int*int);
                    def:(int*int);}
 
@@ -27,5 +28,6 @@ let level attr =
   {level=attr.level+1;
    experience=0;
    hp=(((fst attr.hp)+(snd attr.hp)),(snd attr.hp));
+   c_hp=((fst attr.hp)+(snd attr.hp));
    att=(((fst attr.att)+(snd attr.att)),(snd attr.att));
    def=(((fst attr.def)+(snd attr.def)),(snd attr.def));}

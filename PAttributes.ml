@@ -14,20 +14,20 @@ type player = {
 
 (*Increases the experience of a player*)
 let gain_xp player xp : player =
-  {faction=player.faction; hunger= !player.hunger; thirst= !player.thirst;
+  {faction=player.faction; hunger= player.hunger; thirst= player.thirst;
   xp=(player.xp + xp); level=(level_calc (player.xp + xp));
   inventory=player.inventory; pokeML=player.pokeML}
 
 (*Takes in the experience of the player and computes the level*)
-let level_calc xp : int =
-  if (xp / 50) / (level * (level + 1)) = 0 then level else level + 1
+let rec level_calc xp lvl: int =
+  if (xp < (lvl*100)) then lvl else level_calc (xp-(lvl*100)) (lvl+1)
 
 (*Add item
   Precondition: item must be valid*)
 let rec add_item inv item =
   match inv with
   | h::t -> if (h.name = item)
-            then (h.quantity := !h.quantity + 1)
+            then (h.quantity := !h.quantity + 1);
             else add_item t item
   | [] -> ()
 
@@ -35,7 +35,7 @@ let rec add_item inv item =
 let rec remove_item inv item =
   match inv with
   | h::t -> if (h.name = item)
-            then if (!(h.quantity)>0) then (h.quantity := !h.quantity - 1)
+            then if (!(h.quantity)>0) then (h.quantity := !h.quantity - 1);
                  else print_string "You do not have this item!"; ()
             else remove_item t item
   | [] -> ()

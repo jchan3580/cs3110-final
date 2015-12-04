@@ -1,3 +1,5 @@
+open Items
+
 (*Creates a new player type, containing the exp, inventory, and pokeML*)
 type player
 

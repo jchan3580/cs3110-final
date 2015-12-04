@@ -5,7 +5,7 @@ open Items
 
 (*Takes an item and computes its hunger boost*)
 let consume_hunger_helper item =
-  match item.consumable with
+  match (get_consume item) with
   |None -> 0
   |Some x ->
   match x with
@@ -18,7 +18,7 @@ let consume_hunger_helper item =
   |Water -> 0
   |Clean Water -> 5
 
-(*Takes an item and computers its thirst boost*)
+(*Takes an item and computes its thirst boost*)
 let consume_thirst_helper item =
   match item.consumable with
   |None -> 0
@@ -35,14 +35,15 @@ let consume_thirst_helper item =
 
 
 (*consumes an item to increase the player's hunger bar*)
-let consume (item : item) player : player =
-  {faction = player.faction;
-  hunger = (!player.hunger + consume_hunger_helper item);
-  thirst = (!player.thirst + consume_thirst_helper item); xp = player.xp;
-  level = player.level; inventory = player.inventory; pokeML = player.pokeML}
+let consume (player : player) (i : item) : player =
+  if ((in_inv (player.inventory) (i.name))=true) then
+  (hunger := (!player.hunger + (consume_hunger_helper i));
+    thirst := (!player.thirst + (consume_thirst_helper i));
+    player)
+  else print_string "You do not have that item!"; player
 
 (*uses an item on an pokeML*)
-let use_item : 'a player -> 'a pokeML
+let use_item : player -> pokeML = failwith "TODO"
 
 (*initiates a battle with another player or pokeML*)
-let battle : 'a player -> 'b player -> unit
+let battle : player -> player -> unit = failwith "TODO"
