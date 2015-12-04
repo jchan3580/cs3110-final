@@ -23,6 +23,7 @@ let use_ability poke =
   | "water" -> ()
   | "earth" -> ()
   | "air" -> ()
+  | _ -> ()
 
 let level attr =
   {level=attr.level+1;

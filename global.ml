@@ -15,6 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>. *)
 
 open Base
+open PokeML
+open Inv
 (* open Common
  *)
 
@@ -89,19 +91,19 @@ module Species = struct
   let xmass = function
     | Cow, _ -> 3.0
     | Horse, _ -> 2.5
-    | Pokeml, _ -> 2.0
+    | Pokeml x, _ -> 2.0
     | _ -> 1.0
 
   let xathletic = function
     | Cow, _ -> 2.0
     | Horse, _ -> 2.0
-    | Pokeml, _ -> 1.5
+    | Pokeml x, _ -> 1.5
     | _ -> 1.0
 
   let def_inv = function
     | Hum, _ -> Inv.default
     | Cow, _ | Horse, _ -> Inv.animal
-    | Pokeml, _ -> Inv.pokeml
+    | Pokeml x, _ -> Inv.pokeml
 end
 
 module Unit = struct

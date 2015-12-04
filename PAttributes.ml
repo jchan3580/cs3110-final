@@ -1,10 +1,11 @@
 open Global
 open Inv
 open Items
+open PokeML
 
 (*Creates a new player type, containing the exp, inventory, and pokeML*)
 type player = {
-  faction: Tile.faction;
+  (*faction: Tile.faction;*)
   hunger: int ref;
   thirst: int ref;
   xp: int;
@@ -14,7 +15,7 @@ type player = {
 
 (*Increases the experience of a player*)
 let gain_xp player xp : player =
-  {faction=player.faction; hunger= player.hunger; thirst= player.thirst;
+  {(*faction=player.faction;*) hunger= player.hunger; thirst= player.thirst;
   xp=(player.xp + xp); level=(level_calc (player.xp + xp));
   inventory=player.inventory; pokeML=player.pokeML}
 
@@ -27,7 +28,7 @@ let rec level_calc xp lvl: int =
 let rec add_item inv item =
   match inv with
   | h::t -> if (h.name = item)
-            then (h.quantity := !h.quantity + 1);
+            then ((h.quantity := !h.quantity + 1);())
             else add_item t item
   | [] -> ()
 
@@ -35,8 +36,8 @@ let rec add_item inv item =
 let rec remove_item inv item =
   match inv with
   | h::t -> if (h.name = item)
-            then if (!(h.quantity)>0) then (h.quantity := !h.quantity - 1);
-                 else print_string "You do not have this item!"; ()
+            then if (!(h.quantity)>0) then ((h.quantity := !h.quantity - 1);())
+                 else (print_string "You do not have this item!"; ())
             else remove_item t item
   | [] -> ()
 

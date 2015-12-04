@@ -1,7 +1,15 @@
 open Items
+open PokeML
 
 (*Creates a new player type, containing the exp, inventory, and pokeML*)
-type player
+type player = {
+  (*faction: Tile.faction;*)
+  hunger: int ref;
+  thirst: int ref;
+  xp: int;
+  level: int;
+  inventory: item list;
+  pokeML: pokeML list}
 
 (*Increases the experience of a player*)
 val gain_xp : player -> int -> player

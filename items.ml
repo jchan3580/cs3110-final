@@ -1,29 +1,26 @@
-type food = | Raw Meat | Cooked Meat | Burnt Meat
-| Salad | Coconut | Stir Fry | Water | Clean Water
+type food = | RawMeat | CookedMeat | BurntMeat
+| Salad | Coconut | StirFry | Water | CleanWater
 
 type item = {name: string; description: string; quantity: int ref;
              consumable: food option}
-
-let get_consume item =
-  item.consumable
 
 let cook item =
   match item.name with
   | "raw meat" -> print_string "Successfully cooked a piece of meat!";
       {name = "cooked meat";
       description = "This piece of meat looks delicious and edible!";
-      quantity = 1;
-      consumable = Some Cooked Meat;}
+      quantity = ref 1;
+      consumable = Some CookedMeat;}
   | "cooked meat" -> print_string "Unfortunately, you burned a piece of meat";
       {name = "burnt meat";
       description = "This piece of meat is slightly overcooked";
-      quantity = 1;
-      consumable =  Some Burnt Meat;}
+      quantity = ref 1;
+      consumable =  Some BurntMeat;}
   | "salad" -> print_string "You made stir fry";
       {name = "stir fry";
       description = "A delicious medly of cooked veggies";
-      quantity = 1;
-      consumable =  Some Stir Fry;}
+      quantity = ref 1;
+      consumable =  Some StirFry;}
   | _ -> print_string "This item can\'t be cooked!"; item
 
 let combine item1 item2 =
@@ -33,10 +30,10 @@ let combine item1 item2 =
             (*PLACE A FIRE ON THE GROUND SOMEHOW*)
             {name = "campfire";
              description ="Ouch it's hot, you can probably cook things with it";
-             quantity = 1;
+             quantity = ref 1;
              consumable = None;}
   | _, _ -> print_string "These items cannot be combined!";
             {name = "null";
              description = "broken";
-             quantity = 0;
+             quantity = ref 0;
              consumable = None;}
