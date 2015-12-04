@@ -48,10 +48,6 @@ let rec in_inv inv item =
             else in_inv t item
   | [] -> false
 
-
-(*Changes the inventory of the player*)
-(*let use_item player : player =*)
-
 (*Calculates the list of abilities a player has access to in order to interact
 with the environment*)
 (*let skills player : string list =*)
