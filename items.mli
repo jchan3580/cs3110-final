@@ -1,3 +1,6 @@
+(*Items that can be consumed*)
+type food
+
 (*The items used by the player*)
 type item
 
