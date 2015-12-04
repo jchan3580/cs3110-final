@@ -19,7 +19,7 @@ let gain_xp player xp : player =
 
 (*Takes in the experience of the player and computes the level*)
 let level_calc xp : int =
-  xp / 100 + 1
+  if (xp / 50) / (level * (level + 1)) = 0 then level else level + 1
 
 let rec rem_helper lst item =
   match lst with
