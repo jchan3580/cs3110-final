@@ -1,9 +1,7 @@
 type food = | Raw Meat | Cooked Meat | Burnt Meat | Salad | Coconut | Stir Fry
 
-type item = {name: string; description: string; quantity: int;
+type item = {name: string; description: string; quantity: int ref;
              consumable: food option}
-
-type prop = [ `Item of item | `Edible of food]
 
 let cook item =
   match item.name with
