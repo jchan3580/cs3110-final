@@ -43,8 +43,27 @@ let consume (player : player) (i : item) : unit =
       ())
   else (print_string "You do not have that item!"; ())
 
+(*uses two items together*)
+let use_item player item1 item2 =
+  if ((in_inv (player.inventory) (item1.name))=true&&
+    ((in_inv (player.inventory) (item2.name))=true))
+  then (match (combine item1 item2) with
+    | Some x -> (remove_item player.inventory item1.name;
+                remove_item player.inventory item2.name;
+                add_item player.inventory x; ())
+    | None -> ())
+  else (print_string "You do not have those items!"; ())
+
 (*uses an item on an pokeML*)
-let use_item player pokeML = failwith "TODO"
+let use_pokeML player pokeML item =
+  if ((in_inv (player.inventory) (item.name))=true)
+  then (if((in_poke_inv (player.pokeML) (pokeML.name))=true)
+    then (match (use_ability pokeML item) with
+      | Some x -> (remove_item player.inventory item.name;
+                   add_item player.inventory x; ())
+      | None -> ())
+    else (print_string "You do not have that pokeML!"; ()))
+  else (print_string "You do not have that item!"; ())
 
 (*Drops an item*)
 let drop_item player item =

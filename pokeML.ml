@@ -1,3 +1,5 @@
+open Items
+
 type attributes = {level:int;
                    experience:int;
                    hp:(int*int);
@@ -15,15 +17,16 @@ type pokeML = {name:string;
                moves: move list;
                element:string;
                attributes: attributes;
+               quantity: int ref;
                special: string;}
 
-let use_ability poke =
-  match poke.special with
-  | "fire" -> ()
-  | "water" -> ()
-  | "earth" -> ()
-  | "air" -> ()
-  | _ -> ()
+let use_ability pokeML item =
+  match pokeML.special with
+  | "fire" -> cook item
+  | "water" -> if (item.name = "Water") then Some "CleanWater" else None
+  | "earth" -> None
+  | "air" -> None
+  | _ -> None
 
 let level attr =
   {level=attr.level+1;

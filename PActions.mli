@@ -12,8 +12,11 @@ val consume_thirst_helper : item -> int
 (*consumes an item to increase the player's hunger bar*)
 val consume : player -> item -> unit
 
+(*uses two items together*)
+val use_item : player -> item -> item -> unit
+
 (*uses an item on an pokeML*)
-val use_item : player -> pokeML -> unit
+val use_pokeML : player -> pokeML -> item -> unit
 
 (*Drops an item*)
 val drop_item : player -> item -> unit

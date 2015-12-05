@@ -18,10 +18,11 @@ type pokeML = {name:string;
                moves: move list;
                element:string;
                attributes: attributes;
+               quantity: int ref;
                special: string;}
 
 (*uses a pokeML ability*)
-val use_ability : pokeML -> unit
+val use_ability : pokeML -> item -> string option
 
 (*increases a pokeML's abilities*)
 val level : attributes -> attributes

@@ -26,6 +26,9 @@ val remove_item : item list -> string -> unit
 (*Checks whether or not an item is in the inventory*)
 val in_inv : item list -> string -> bool
 
+(*Checks whether or not an item is in the pokeML inventory*)
+val in_poke_inv : pokeML list -> string -> bool
+
 (*Calculates the list of abilities a player has access to in order to interact
 with the environment*)
 val skills : player -> string list

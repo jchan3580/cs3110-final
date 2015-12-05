@@ -7,8 +7,8 @@ type item = {name: string; description: string; quantity: int ref;
              consumable: food option}
 
 (*Turn one item into food*)
-val cook : item -> item
+val cook : item -> string option
 
 (*Combine items to make a more advanced item*)
-val combine : item -> item -> item
+val combine : item -> item -> string option
 
