@@ -1,12 +1,17 @@
 open PAttributes
 open PokeML
 
-(*translates the command to something that can be used by the main method*)
-val commands : string -> unit
+type result = | Flee | Switch | Dead of pokeML
 
 (*checks to see whether health is 0 *)
-val end_condition : player  -> bool
+val dead : pokeML  -> bool
 
-(*has the methods that modify the attributes according to the specific command
-parsed *)
-val main : player -> player -> player
+val attack : pokeML -> move -> pokeML -> unit
+
+val battle : pokeML -> pokeML -> result
+
+val fight : pokeML list -> pokeML -> bool
+
+val refreshHP: pokeML list -> unit
+
+val main : player -> pokeML -> unit

@@ -8,20 +8,25 @@ type player = {
   (*faction: Tile.faction;*)
   hunger: int ref;
   thirst: int ref;
-  xp: int;
-  level: int;
+  xp: int ref;
+  level: int ref;
   inventory: item list;
   pokeML: pokeML list;}
+
+let change_hunger player num =
+  player.hunger := (!(player.hunger) + num);()
+
+let change_thirst player num =
+  player.thirst := (!(player.thirst) + num);()
 
 (*Takes in the experience of the player and computes the level*)
 let rec level_calc xp lvl: int =
   if (xp < (lvl*100)) then lvl else level_calc (xp-(lvl*100)) (lvl+1)
 
 (*Increases the experience of a player*)
-let gain_xp player xp : player =
-  {(*faction=player.faction;*) hunger= player.hunger; thirst= player.thirst;
-  xp=(player.xp + xp); level=(level_calc (player.xp + xp) 1);
-  inventory=player.inventory; pokeML=player.pokeML}
+let gain_exp player xp : unit =
+  (player.xp:=!(player.xp)+xp);
+  (player.level:=(level_calc !(player.xp) 1));()
 
 (*Add item
   Precondition: item must be valid*)
@@ -69,6 +74,15 @@ let rec in_poke_inv inv item =
             else in_poke_inv t item
   | [] -> false
 
-(*Calculates the list of abilities a player has access to in order to interact
-with the environment*)
-let skills player : string list = failwith "TODO"
+(*Selects a pokeML from a list*)
+let rec sel_pokeML inv str =
+  match inv with
+  | h::t -> if (h.name = str) then h else sel_pokeML t str
+  | [] -> {name="";
+           description="";
+           moves=[{name1="";description1="";accuracy=0;damage=0;}];
+           element="";
+           attributes={level=ref 0;experience=ref 0;hp=ref (0,0);
+           c_hp=ref 0;att=ref (0,0);def=ref (0,0);};
+           quantity=ref 0;
+           special="";}

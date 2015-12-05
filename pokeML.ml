@@ -1,14 +1,14 @@
 open Items
 
-type attributes = {level:int;
-                   experience:int;
-                   hp:(int*int);
-                   c_hp:int;
-                   att:(int*int);
-                   def:(int*int);}
+type attributes = {level:int ref;
+                   experience:int ref;
+                   hp:(int*int) ref;
+                   c_hp:int ref;
+                   att:(int*int) ref;
+                   def:(int*int) ref;}
 
-type move = {name:string;
-             description:string;
+type move = {name1:string;
+             description1:string;
              accuracy:int;
              damage:int;}
 
@@ -29,9 +29,38 @@ let use_ability pokeML item =
   | _ -> None
 
 let level attr =
-  {level=attr.level+1;
-   experience=0;
-   hp=(((fst attr.hp)+(snd attr.hp)),(snd attr.hp));
-   c_hp=((fst attr.hp)+(snd attr.hp));
-   att=(((fst attr.att)+(snd attr.att)),(snd attr.att));
-   def=(((fst attr.def)+(snd attr.def)),(snd attr.def));}
+  attr.level:=(!(attr.level)+1);
+   attr.experience:=0;
+   attr.hp:=(((fst !(attr.hp))+(snd !(attr.hp))),(snd !(attr.hp)));
+   attr.c_hp:=(fst !(attr.hp));
+   attr.att:=(((fst !(attr.att))+(snd !(attr.att))),(snd !(attr.att)));
+   attr.def:=(((fst !(attr.def))+(snd !(attr.def))),(snd !(attr.def)));()
+
+let gain_xp attr xp =
+  attr.experience:=(!(attr.experience)+xp);
+  if !(attr.experience)>=(!(attr.level)*100)
+  then (level attr)
+  else ()
+
+let rec gain_xp_lst lst xp =
+  match lst with
+  | h::t -> (gain_xp h.attributes xp); gain_xp_lst t xp
+  | [] -> ()
+
+let rec find_move lst str =
+  match lst with
+  | h::t -> if (h.name1 = str) then h else find_move t str
+  | [] -> {name1=""; description1=""; accuracy=0; damage=0;}
+
+let find_ran_move lst =
+  List.nth lst (Random.int (List.length lst))
+
+let rec current_pokeML lst =
+  match lst with
+  | h::t -> if (!(h.quantity)>0) then h::(current_pokeML t) else current_pokeML t
+  | [] -> []
+
+let rec rem_pokeML lst pokeML=
+  match lst with
+  | h::t -> if (h = pokeML) then (h.quantity:=0;()) else (rem_pokeML t pokeML)
+  | [] -> ()

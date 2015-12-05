@@ -25,7 +25,7 @@ val drop_item : player -> item -> unit
 val pickup_item : player -> item -> unit
 
 (*initiates a battle with another player or pokeML*)
-val battle : player -> player -> unit
+val battle : player -> pokeML -> unit
 
 (*Moves the player*)
 val move : player -> string -> unit
