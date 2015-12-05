@@ -1,3 +1,4 @@
+open Items
 (*the attributes a pokeML has *)
 type attributes = {level:int;
                    experience:int;

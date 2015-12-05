@@ -15,7 +15,7 @@ type player = {
 val gain_xp : player -> int -> player
 
 (*Takes in the experience of the player and computes the level*)
-val level_calc : player -> player
+val level_calc : int -> int -> int
 
 (*Remove helper function*)
 val add_item : item list -> string -> unit

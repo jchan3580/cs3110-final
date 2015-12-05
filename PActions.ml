@@ -57,7 +57,7 @@ let use_item player item1 item2 =
 (*uses an item on an pokeML*)
 let use_pokeML player pokeML item =
   if ((in_inv (player.inventory) (item.name))=true)
-  then (if((in_poke_inv (player.pokeML) (pokeML.name))=true)
+  then (if((in_poke_inv (player.pokeML) (PokeML.(pokeML.name)))=true)
     then (match (use_ability pokeML item) with
       | Some x -> (remove_item player.inventory item.name;
                    add_item player.inventory x; ())
