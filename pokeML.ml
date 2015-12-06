@@ -23,7 +23,7 @@ type pokeML = {name:string;
 let use_ability pokeML item =
   match pokeML.special with
   | "fire" -> cook item
-  | "water" -> if (item.name = "Water") then Some "CleanWater" else None
+  | "water" -> if (item.name = "water") then Some "clean water" else None
   | "earth" -> None
   | "air" -> None
   | _ -> None
@@ -49,8 +49,8 @@ let rec gain_xp_lst lst xp =
 
 let rec find_move lst str =
   match lst with
-  | h::t -> if (h.name1 = str) then h else find_move t str
-  | [] -> {name1=""; description1=""; accuracy=0; damage=0;}
+  | h::t -> if (h.name1 = str) then Some h else find_move t str
+  | [] -> None
 
 let find_ran_move lst =
   List.nth lst (Random.int (List.length lst))
@@ -67,5 +67,5 @@ let rec rem_pokeML lst pokeML=
 
 let rec print_move_lst lst =
   match lst with
-  | h::t -> print_string move.name1; print_move_lst t
+  | h::t -> print_string h.name1; print_move_lst t
   | [] -> ()

@@ -32,10 +32,12 @@ val gain_xp_lst : pokeML list -> int -> unit
 (*increases a pokeML's abilities*)
 val level : attributes -> unit
 
-val find_move : move list -> string -> move
+val find_move : move list -> string -> move option
 
 val find_ran_move : move list -> move
 
 val current_pokeML : pokeML list -> pokeML list
 
 val rem_pokeML : pokeML list -> pokeML -> unit
+
+val print_move_lst : move list -> unit

@@ -7,10 +7,10 @@ type item = {name: string; description: string; quantity: int ref;
 let cook item =
   match item.name with
   | "raw meat" -> print_string "Successfully cooked a piece of meat!";
-      Some "CookedMeat"
+      Some "cooked meat"
   | "cooked meat" -> print_string "Unfortunately, you burned a piece of meat";
-      Some "BurntMeat"
-  | "salad" -> print_string "You made stir fry"; Some "StirFry"
+      Some "burnt meat"
+  | "salad" -> print_string "You made stir fry"; Some "stir fry"
   | _ -> print_string "This item can\'t be cooked!"; None
 
 let combine item1 item2 =
