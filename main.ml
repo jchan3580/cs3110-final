@@ -80,6 +80,31 @@ let parse player str room=
         match (sel_pokeML room.pokeML command) with
         | Some x -> PActions.battle player x
         | None -> (print_string "\nThat is not a valid pokeML!";()))
+  else if (String.length str >= 8 &&
+      String.sub (String.lowercase str) 0 8 = "examine ") then
+    (let command = String.sub (String.lowercase str) 8
+                    ((String.length (String.lowercase str))-8) in
+        if (in_poke_inv player.pokeML command)
+        then
+        (match (sel_pokeML player.pokeML command) with
+             | Some x -> (print_newline(); print_string x.name;)
+             | None -> (print_string "\nThat is not a valid pokeML!";()))
+        else if (in_inv player.inventory command)
+        then
+        (match (sel_item player.inventory command) with
+             | Some x -> (print_newline(); print_string Items.(x.name);)
+             | _ -> (print_string "\nThat is not a valid item!";()))
+        else if (in_poke_inv room.pokeML command)
+        then
+        (match (sel_pokeML room.pokeML command) with
+             | Some x -> (print_newline(); print_string x.name;)
+             | None -> (print_string "\nThat is not a valid pokeML!";()))
+        else if (in_inv room.items command)
+        then
+        (match (sel_item room.items command) with
+             | Some x -> (print_newline(); print_string Items.(x.name);)
+             | _ -> (print_string "\nThat is not a valid item!";()))
+        else (print_string "\nCannot examine this."; ()))
   else if (String.lowercase str)="look"
        then ((print_newline(); print_string (room_description room));())
   else if (String.lowercase str)="quit"
