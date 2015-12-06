@@ -83,7 +83,7 @@ let parse player str room=
   else if (String.lowercase str)="look"
        then ((print_string (room_description room));())
   else if (String.lowercase str)="quit"
-       then (*Quit the game*)()
+       then exit 0
   else if (String.lowercase str)="help"
        then (print_string "This is the help menu. Here are the possible
 commands: eat _, drop _, pick up _, use _, move _, battle _, look, stats, quit,
@@ -99,7 +99,7 @@ current pokeML. Look restates the description of the room, and quit ends the
 game. In order to beat the game, you must reach level 5, which can be
 accomplished by doing various tasks. Every command you enter will slowly
 decrease your hunger and thirst levels - should they reach 0, you will die and
-lose the game. Good luck!"())
+lose the game. Good luck!";())
   else if (String.lowercase str)="inventory"
        then (print_string (get_items player.inventory "");())
   else if (String.lowercase str)="pokeML"
