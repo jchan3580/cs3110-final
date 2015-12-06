@@ -12,8 +12,10 @@ val get_pokeML : pokeML list -> string -> string
 
 val room_description : room -> string
 
+val gen_room_items : item list -> pokeML list -> room
+
 (*Parses commands*)
-val parse : player -> string -> room -> unit
+val parse : player -> string -> room ref-> unit
 
 (*Calls all the necessary components to start the game*)
-val main : player -> room -> unit
+val main : player -> room ref -> 'a

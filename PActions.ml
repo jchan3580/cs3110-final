@@ -94,6 +94,3 @@ let pickup_item player item =
 (*initiates a battle with another player or pokeML*)
 let battle player pokeML=
   main player pokeML
-
-(*Moves the player*)
-let move : player -> string -> unit= failwith "TODO"

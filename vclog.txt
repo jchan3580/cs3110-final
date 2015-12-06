@@ -1,3 +1,13 @@
+commit db095492296305c2e91fa6fd971f576f29175f47
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sun Dec 6 00:11:02 2015 -0500
+
+    compile issues
+
+ main.ml   |  16 +-
+ vclog.txt | 612 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 627 insertions(+), 1 deletion(-)
+
 commit 3412bb60340fb73eeef5f603f7765e1d0536cf89
 Author: Joshua Chan <jchan3580@gmail.com>
 Date:   Sun Dec 6 00:02:19 2015 -0500
