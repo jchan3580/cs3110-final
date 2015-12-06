@@ -74,15 +74,20 @@ let rec in_poke_inv inv item =
             else in_poke_inv t item
   | [] -> false
 
+(*Selects an item from a list*)
+let rec sel_item inv str =
+  match inv with
+  | h::t -> if (Items.(h.name) = str) then Some h else sel_item t str
+  | [] -> None
+
 (*Selects a pokeML from a list*)
 let rec sel_pokeML inv str =
   match inv with
-  | h::t -> if (h.name = str) then h else sel_pokeML t str
-  | [] -> {name="";
-           description="";
-           moves=[{name1="";description1="";accuracy=0;damage=0;}];
-           element="";
-           attributes={level=ref 0;experience=ref 0;hp=ref (0,0);
-           c_hp=ref 0;att=ref (0,0);def=ref (0,0);};
-           quantity=ref 0;
-           special="";}
+  | h::t -> if (h.name = str) then Some h else sel_pokeML t str
+  | [] -> None
+
+(*Prints a list of pokeML*)
+let rec print_poke_lst lst =
+  match lst with
+  | h::t -> print_string h.name; print_poke_lst t
+  | [] -> ()

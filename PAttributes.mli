@@ -35,5 +35,10 @@ val in_inv : item list -> string -> bool
 (*Checks whether or not an item is in the pokeML inventory*)
 val in_poke_inv : pokeML list -> string -> bool
 
+(*Selects an item from a list*)
+val sel_item : item list -> string -> item option
+
 (*Selects a pokeML from a list*)
-val sel_pokeML : pokeML list -> string -> pokeML
+val sel_pokeML : pokeML list -> string -> pokeML option
+
+val print_poke_lst : pokeML list -> unit

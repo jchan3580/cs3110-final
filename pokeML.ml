@@ -64,3 +64,8 @@ let rec rem_pokeML lst pokeML=
   match lst with
   | h::t -> if (h = pokeML) then (h.quantity:=0;()) else (rem_pokeML t pokeML)
   | [] -> ()
+
+let rec print_move_lst lst =
+  match lst with
+  | h::t -> print_string move.name1; print_move_lst t
+  | [] -> ()

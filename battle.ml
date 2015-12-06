@@ -17,12 +17,12 @@ let attack poke1 move poke2 =
 (*two pokeML fight each other*)
 let rec battle poke1 poke2 =
   print_string "What would you like to do?";
-  (*Choices are attack, switch, flee, player input is x*)
-  match "attack" with
+  let command = read_line () in
+  match command with
   | "attack" -> (print_string "Which move would you like to select?";
-                  (*Prints list of names of the poke1.moves*)
-                  (*Player input is y*)
-                  let move1 = (find_move poke1.moves "") in
+                  print_move_lst poke1.moves;
+                  let input = read_line () in
+                  let move1 = (find_move poke1.moves input) in
                   let move2 = (find_ran_move poke2.moves) in
                   attack poke1 move1 poke2;
                   if (dead poke2) then Dead poke2
@@ -35,17 +35,23 @@ let rec battle poke1 poke2 =
 
 (*Your list of pokeML fight a wild pokeML*)
 let rec fight lst pokeML =
-  (*Print list of your pokeML, lst1*)
+  print_poke_lst lst;
   print_string "Which pokeML would you like to use?";
-  (*Have player input a string of pokeML name, x*)
-  (*Print = poke1.name versus poke2.name*)
-  match (battle (sel_pokeML lst "x") pokeML) with
-  | Flee -> false
-  | Switch -> fight lst pokeML
-  | Dead x -> if (x=pokeML) then true
-              else (rem_pokeML lst x;
-                    let new_lst = (current_pokeML lst) in
-                    if (new_lst = []) then false else fight new_lst pokeML)
+  let poke = read_line () in
+  match (sel_pokeML lst poke) with
+  | Some x ->print_string x.name;
+             print_string " versus ";
+             print_string pokeML.name;
+            (match (battle x pokeML) with
+            | Flee -> false
+            | Switch -> fight lst pokeML
+            | Dead y -> if (y=pokeML) then true
+                else (rem_pokeML lst y;
+                      let new_lst = (current_pokeML lst) in
+                      if (new_lst = []) then false else fight new_lst pokeML))
+  | None -> (print_string "That is not a valid pokeML! Please try again.";
+              fight lst pokeML)
+
 
 (*Sets all the current HP to max HP*)
 let rec refreshHP lst =
