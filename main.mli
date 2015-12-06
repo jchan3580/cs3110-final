@@ -16,4 +16,4 @@ val room_description : room -> string
 val parse : player -> string -> room -> unit
 
 (*Calls all the necessary components to start the game*)
-val main : player -> unit
+val main : player -> room -> unit
