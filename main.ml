@@ -325,6 +325,20 @@ let input_list (input : string) : string list =
     [String.sub input 0 space_ind; String.sub input (space_ind+1) (sublen-1)]
   else [input]
 
+let gen_room_items item_lst p_lst =
+  let ilst = ref [] in
+  let plst = ref [] in
+  let x = Random.int (List.length item_lst) in
+  let y = Random.int (List.length p_lst) in
+  for i = 0 to 10 do
+    let itms = List.nth item_lst ((i*x) mod (List.length item_lst))  in
+    let pkmls = List.nth p_lst ((i*y) mod (List.length p_lst))  in
+    ilst := List.append !ilst [itms];
+    plst := List.append !plst [pkmls];
+  done;
+  {items= !ilst; pokeML= !plst}
+
+
   let rec main player room =
   let input = read_line() in
   (player.hunger:=!(player.hunger) - 1);
@@ -345,5 +359,5 @@ let player = {hunger= ref 100;
   level= ref 1;
   inventory= initial_item_list;
   pokeML=
-  }
+  } in
 *)

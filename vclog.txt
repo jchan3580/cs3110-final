@@ -1,0 +1,612 @@
+commit 3412bb60340fb73eeef5f603f7765e1d0536cf89
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sun Dec 6 00:02:19 2015 -0500
+
+    final
+
+ README.md |  2 ++
+ main.ml   | 34 ++++++++++++++++++----------------
+ 2 files changed, 20 insertions(+), 16 deletions(-)
+
+commit 9e1563cd1351c59c5ae4328abb3bcd20db356aa4
+Merge: e621f22 bbd7c4f
+Author: Sophie <zingyli@gmail.com>
+Date:   Sat Dec 5 23:53:42 2015 -0500
+
+    merged
+
+commit e621f22a90855d78fc3ea95658c279f6d298a704
+Author: Sophie <zingyli@gmail.com>
+Date:   Sat Dec 5 23:51:09 2015 -0500
+
+    images and rooms
+
+ main.ml | 59 +++++++++++++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 51 insertions(+), 8 deletions(-)
+
+commit bbd7c4f603e3b6fe676473f599c68ddf33b7548d
+Merge: 926a613 b9a504e
+Author: jls654 <jls654@cornell.edu>
+Date:   Sat Dec 5 23:22:49 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+    
+    Conflicts:
+    	main.ml
+
+commit 926a613da84441f202cfe984025a9411e483948e
+Author: jls654 <jls654@cornell.edu>
+Date:   Sat Dec 5 23:18:38 2015 -0500
+
+    initial pokeML list
+
+ main.ml | 105 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 104 insertions(+), 1 deletion(-)
+
+commit b9a504e95d8f1c42a0eed354f95a05f4a8520880
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 23:07:39 2015 -0500
+
+    examine
+
+ main.ml | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+commit b8ebf30282084b84dd60524a5917b3a0bddafb14
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 22:53:51 2015 -0500
+
+    print stuff
+
+ PActions.ml    | 12 +++++------
+ PAttributes.ml |  4 ++--
+ battle.ml      | 19 +++++++++---------
+ main.ml        | 63 ++++++++++++++++++++++++++++++----------------------------
+ main.mli       |  2 +-
+ 5 files changed, 52 insertions(+), 48 deletions(-)
+
+commit 29e43deb42c61e71ea5239000b71996d2594e9d6
+Author: Sophie <zingyli@gmail.com>
+Date:   Sat Dec 5 22:30:20 2015 -0500
+
+    removed more unused files
+
+ lib/glcaml.ml     |  8609 ------------------------
+ lib/glcaml.mli    |  5690 ----------------
+ lib/glcaml.o      |   Bin 361168 -> 0 bytes
+ lib/glcaml_stub.c | 18861 ----------------------------------------------------
+ lib/glcaml_stub.o |   Bin 1047244 -> 0 bytes
+ lib/sdl.ml        |   846 ---
+ lib/sdl.mli       |   930 ---
+ lib/sdl.o         |   Bin 47392 -> 0 bytes
+ lib/sdl_stub.c    |  1415 ----
+ lib/sdl_stub.o    |   Bin 42176 -> 0 bytes
+ lib/win.ml        |    62 -
+ lib/win.mli       |    37 -
+ lib/win_stub.c    |   166 -
+ lib/win_stub.o    |   Bin 3124 -> 0 bytes
+ 14 files changed, 36616 deletions(-)
+
+commit ad39e50e61909692d9c43f33fd1c5acc5128675b
+Merge: 5fc7122 6fc1fdf
+Author: Sophie <zingyli@gmail.com>
+Date:   Sat Dec 5 22:27:35 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit 5fc712260f43633eb3e4a050c624de1989e14b37
+Author: Sophie <zingyli@gmail.com>
+Date:   Sat Dec 5 22:27:16 2015 -0500
+
+    removed unused files
+
+ base.ml   |  175 --
+ glcaml.ml | 8609 -------------------------------------------------------------
+ global.ml |  408 ---
+ grafx.ml  |  281 --
+ sdl.ml    |  846 ------
+ win.ml    |   62 -
+ 6 files changed, 10381 deletions(-)
+
+commit 6fc1fdf8c3413652596eaad70371f870defa9d10
+Merge: 6d882b2 360d70b
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 22:24:34 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit 6d882b2404ba9599c80b0307a8e5e29bfc379ef8
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 22:24:30 2015 -0500
+
+    minor changes
+
+ main.ml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit d10c321479862e4b2eafbe3753b6983c4af65d44
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 22:18:35 2015 -0500
+
+    help
+
+ PActions.ml | 16 ++++++++++++----
+ items.ml    |  6 ++++--
+ main.ml     | 20 ++++++++++++++++++--
+ 3 files changed, 34 insertions(+), 8 deletions(-)
+
+commit 360d70b380582a31299248e9c24b9bfe0c2c0a99
+Merge: 1f080f7 d10c321
+Author: jls654 <jls654@cornell.edu>
+Date:   Sat Dec 5 22:09:07 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit 1f080f73d2b102bb8f994537c40d1a4484fde5a5
+Author: jls654 <jls654@cornell.edu>
+Date:   Sat Dec 5 22:08:56 2015 -0500
+
+    initial item list added
+
+ main.ml | 55 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 55 insertions(+)
+
+commit 0254de23ec38d522a75b8bd0a39a55a259c9ea5b
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 21:53:13 2015 -0500
+
+    Now we can battle
+
+ battle.ml |  2 +-
+ main.ml   | 24 ++++++++++++++++--------
+ 2 files changed, 17 insertions(+), 9 deletions(-)
+
+commit 8c8ad5fdc832a68671c7082bb2ca14959b592f90
+Author: jls654 <jls654@cornell.edu>
+Date:   Sat Dec 5 21:31:15 2015 -0500
+
+    another update
+
+ main.mli | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8515d3a6919ba77c33c2b524620d96c71020982d
+Author: jls654 <jls654@cornell.edu>
+Date:   Sat Dec 5 21:30:18 2015 -0500
+
+    updated main.mli
+
+ main.mli | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+commit c54cd947d6c1409b026a98029cbeb6eb5b37d870
+Merge: 0cf5683 f29f79a
+Author: jls654 <jls654@cornell.edu>
+Date:   Sat Dec 5 21:21:02 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit f29f79a7e920b632011716e48d21b37cc5f9ddf9
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 21:33:51 2015 -0500
+
+    You can catch pokeML now
+
+ battle.ml  | 14 ++++++++++++--
+ battle.mli |  2 ++
+ items.ml   |  6 +++---
+ pokeML.ml  |  2 +-
+ 4 files changed, 18 insertions(+), 6 deletions(-)
+
+commit 0cf5683e7550d5a4f5206975ffddf25bedfd1249
+Author: jls654 <jls654@cornell.edu>
+Date:   Sat Dec 5 21:20:31 2015 -0500
+
+    room stuff
+
+ main.ml | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+commit f026138d82744345db75d577f863da071343b03d
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 21:05:42 2015 -0500
+
+    It compiles!
+
+ battle.ml  | 20 ++++++++++++--------
+ pokeML.ml  |  6 +++---
+ pokeML.mli |  4 +++-
+ 3 files changed, 18 insertions(+), 12 deletions(-)
+
+commit 7bf6d36df1aecc5b84d882eb73ed285026ae4c7f
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 20:52:06 2015 -0500
+
+    MAIN
+
+ PAttributes.ml  |  23 +++---
+ PAttributes.mli |   7 +-
+ battle.ml       |  36 ++++++----
+ main.ml         | 211 +++++++++++++++-----------------------------------------
+ main.mli        |   7 +-
+ pokeML.ml       |   5 ++
+ 6 files changed, 104 insertions(+), 185 deletions(-)
+
+commit 0b534748325630020b9cfd6eb35aede111bed311
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 07:09:15 2015 -0500
+
+    finished battle!
+
+ PActions.ml     | 23 ++++++++++++----------
+ PActions.mli    |  2 +-
+ PAttributes.ml  | 32 +++++++++++++++++++++---------
+ PAttributes.mli | 17 ++++++++++------
+ battle.ml       | 60 +++++++++++++++++++++++++++++++++++++++++++++++++++++----
+ battle.mli      | 17 ++++++++++------
+ pokeML.ml       | 59 +++++++++++++++++++++++++++++++++++++++++---------------
+ pokeML.mli      | 29 +++++++++++++++++++---------
+ 8 files changed, 179 insertions(+), 60 deletions(-)
+
+commit 87c455162b8850eacbd3f553a438ebe8a40fff94
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 00:39:05 2015 -0500
+
+    fixed compile issues
+
+ PActions.ml     |  2 +-
+ PAttributes.ml  | 31 ++++++++++++++++---------------
+ PAttributes.mli |  2 +-
+ pokeML.mli      |  1 +
+ 4 files changed, 19 insertions(+), 17 deletions(-)
+
+commit 87a70bc6ee9e13c838b5ed5e649c11602352503b
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Sat Dec 5 00:22:52 2015 -0500
+
+    filling in more of PActions
+
+ PActions.ml     | 21 ++++++++++++++++++++-
+ PActions.mli    |  5 ++++-
+ PAttributes.ml  | 19 +++++++++++++++++++
+ PAttributes.mli |  3 +++
+ items.ml        | 29 ++++++-----------------------
+ items.mli       |  4 ++--
+ pokeML.ml       | 17 ++++++++++-------
+ pokeML.mli      |  3 ++-
+ 8 files changed, 66 insertions(+), 35 deletions(-)
+
+commit 443947be81e081717c3a78c6604cd96009beced6
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Fri Dec 4 03:48:35 2015 -0500
+
+    PActions
+
+ PActions.ml  | 28 ++++++++++++++++++++++++----
+ PActions.mli | 13 +++++++++++--
+ 2 files changed, 35 insertions(+), 6 deletions(-)
+
+commit eadddf988b5d23e48030531d4ea95d6b92c749c2
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Fri Dec 4 03:34:47 2015 -0500
+
+    minor changes
+
+ PActions.ml     | 30 +++++++++++++++---------------
+ PAttributes.ml  | 11 ++++++-----
+ PAttributes.mli | 10 +++++++++-
+ global.ml       |  8 +++++---
+ items.ml        | 23 ++++++++++-------------
+ items.mli       |  9 ++++-----
+ pokeML.ml       |  1 +
+ pokeML.mli      | 19 ++++++++++++++++---
+ 8 files changed, 66 insertions(+), 45 deletions(-)
+
+commit 2a6512c047ea710a41dde3a14f599f993b2266c5
+Merge: 49d5fe9 3bae4ea
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 23:41:49 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit 49d5fe967931ac747ccbe56ee2673de981daa9f0
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 23:41:40 2015 -0500
+
+    small errors
+
+ PActions.ml     | 19 ++++++++++---------
+ PActions.mli    |  6 +++---
+ PAttributes.ml  | 10 +++++-----
+ PAttributes.mli |  2 ++
+ battle.ml       | 12 ++++++++++++
+ battle.mli      | 15 ++++-----------
+ items.ml        |  3 +++
+ items.mli       |  3 +++
+ pokeML.ml       |  2 ++
+ 9 files changed, 44 insertions(+), 28 deletions(-)
+
+commit 3bae4eaf9ff4fb7529caff49c1a842889bf21a7e
+Merge: fbda925 ec0515b
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 22:18:30 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit fbda925a5714e104bb86f2a9c54efafcda86ae1a
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 22:18:20 2015 -0500
+
+    changed biome variant
+
+ global.ml | 30 +++++++++++++++++++++---------
+ 1 file changed, 21 insertions(+), 9 deletions(-)
+
+commit ec0515b2c507aeb13fb50cdacfd2ef6dd159f2fa
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 22:05:54 2015 -0500
+
+    food
+
+ items.mli | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 4fd0dfae7357d8ed45a402f29a3983beac55cbc1
+Merge: 58bfcd3 c58f853
+Author: jls654 <jls654@cornell.edu>
+Date:   Thu Dec 3 22:02:21 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit 58bfcd3404d23d5c04a9f14e2bbb65883e55c0bc
+Author: jls654 <jls654@cornell.edu>
+Date:   Thu Dec 3 22:00:38 2015 -0500
+
+    PActions consume function implemented and water added to items
+
+ PActions.ml  | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+ PActions.mli |  8 +++++++-
+ items.ml     |  3 ++-
+ 3 files changed, 57 insertions(+), 2 deletions(-)
+
+commit c58f853ab1c2760b4ce89bccbb62ccd7fdbfb20f
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 21:41:14 2015 -0500
+
+    small inventory changes again
+
+ PAttributes.ml  | 4 ----
+ PAttributes.mli | 3 ---
+ 2 files changed, 7 deletions(-)
+
+commit c5f945778272578e3056482d065f1cafebe02107
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 21:35:48 2015 -0500
+
+    minor inventory changes
+
+ PAttributes.ml  | 31 +++++++++++++++++++++++--------
+ PAttributes.mli |  8 +++++++-
+ 2 files changed, 30 insertions(+), 9 deletions(-)
+
+commit 5a2e8fa876aae319318d6babe35c5f62cd83b14c
+Author: jls654 <jls654@cornell.edu>
+Date:   Thu Dec 3 21:28:07 2015 -0500
+
+    New level up formula
+
+ PAttributes.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 91250a918e9c5fd2cb76937f1ef317770c7bbee1
+Merge: ac676f8 0ef790e
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 21:18:34 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit ac676f87a4c52d55fed43df97d1c683977b9b2e6
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 21:18:02 2015 -0500
+
+    remove item
+
+ PAttributes.ml  | 15 ++++++++++++++-
+ PAttributes.mli |  3 +++
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
+commit 0ef790e4cf130e43ef3f5538e506ed0dce252970
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 21:06:56 2015 -0500
+
+    changed type of quantity to int ref
+
+ items.ml | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit a1e15350b21561c03d5ebb7163585dbd2350450b
+Merge: 02c8080 8dfa668
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 13:25:25 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit 02c8080882d8b05ecb75b6ad2065870ebb7c856d
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 13:20:55 2015 -0500
+
+    changed open files
+
+ PAttributes.ml | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+commit 8dfa6682c832e2a244393f70468e2736f1005cd3
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 13:07:03 2015 -0500
+
+    minor stuff
+
+ main.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit b2ad814ee9a76a5316958137be97509700de0bbe
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 12:12:15 2015 -0500
+
+    updated user controls
+
+ main.ml | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit 741b150fc9b477cc622918585cd868628a018034
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 12:11:10 2015 -0500
+
+    changed player attributes: hunger and thirst to refs
+
+ PAttributes.ml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 8e98d0a99bde0e853eec722ff495501196b69cea
+Author: jls654 <jls654@cornell.edu>
+Date:   Thu Dec 3 11:41:13 2015 -0500
+
+    Initial PAttributes changes
+
+ PAttributes.ml  | 19 +++++++++++++++++++
+ PAttributes.mli | 11 +++++++----
+ 2 files changed, 26 insertions(+), 4 deletions(-)
+
+commit 3d9d14351500e2964020bf0c837abf2a5f9ce77e
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 03:28:44 2015 -0500
+
+    changed repl and world map
+
+ global.ml |  78 ++++++++++++++++++++++++---
+ main.ml   | 177 +++++++++++++++++++++++++++++++++++++++++++++++++++++---------
+ 2 files changed, 223 insertions(+), 32 deletions(-)
+
+commit 36ef04c438d16229de645374141cb0803dcf8013
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 02:47:34 2015 -0500
+
+    pokeML abilities basic
+
+ pokeML.ml  | 7 ++++++-
+ pokeML.mli | 4 ++--
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+commit 81535a320a1730b001e349d249e424e49f44e981
+Merge: ebc8c15 8f5dd60
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 02:15:47 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit ebc8c152aa0db4d21cd1c6cc6cbeef09fada843c
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Thu Dec 3 02:15:36 2015 -0500
+
+    Started parse
+
+ main.ml  | 33 +++++++++++++++++++++++++++++++++
+ main.mli |  8 +++++---
+ 2 files changed, 38 insertions(+), 3 deletions(-)
+
+commit 8f5dd60a97b28960522d4dfed3f6410f4871117d
+Author: Sophie <zingyli@gmail.com>
+Date:   Thu Dec 3 00:06:45 2015 -0500
+
+    fixed bugs in files
+
+ base.ml       |  175 ++
+ glcaml.ml     | 8609 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ global.ml     |  330 +++
+ grafx.ml      |  281 ++
+ lib/glcaml.ml |   66 +-
+ lib/sdl.ml    |  368 +--
+ sdl.ml        |  846 ++++++
+ win.ml        |   62 +
+ 8 files changed, 10520 insertions(+), 217 deletions(-)
+
+commit 661d680506b69fbcda35a4b0f6ac36d8dd27e8bf
+Author: Sophie <zingyli@gmail.com>
+Date:   Wed Dec 2 19:29:27 2015 -0500
+
+    changed types of items
+
+ items.ml | 55 ++++++++++++++++++++++++++-----------------------------
+ 1 file changed, 26 insertions(+), 29 deletions(-)
+
+commit f881b02d151a6a001080c75b07a8616e39132d93
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Wed Dec 2 04:01:58 2015 -0500
+
+    changed pokeML
+
+ pokeML.ml  | 26 ++++++++++++++++++++++++++
+ pokeML.mli | 14 +++++++-------
+ 2 files changed, 33 insertions(+), 7 deletions(-)
+
+commit 137e1a1bcf44297a30f1dc0406db31eb1078822f
+Merge: f75ac73 6d4152f
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Wed Dec 2 01:02:54 2015 -0500
+
+    Merge branch 'master' of https://github.com/jchan3580/cs3110-final
+
+commit f75ac73c2859cae67558b136551b1d5e24579ca4
+Author: Joshua Chan <jchan3580@gmail.com>
+Date:   Wed Dec 2 01:02:29 2015 -0500
+
+    Small item changes
+
+ items.ml  | 43 +++++++++++++++++++++++++++++++++++++++++++
+ items.mli | 11 +++--------
+ 2 files changed, 46 insertions(+), 8 deletions(-)
+
+commit 6d4152f11aa3deb4e1e9abe402a82eeb688f22e0
+Author: Sophie <zingyli@gmail.com>
+Date:   Wed Dec 2 00:14:02 2015 -0500
+
+    graphics library added
+
+ lib/glcaml.ml     |  8609 ++++++++++++++++++++++++
+ lib/glcaml.mli    |  5690 ++++++++++++++++
+ lib/glcaml.o      |   Bin 0 -> 361168 bytes
+ lib/glcaml_stub.c | 18861 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ lib/glcaml_stub.o |   Bin 0 -> 1047244 bytes
+ lib/sdl.ml        |   846 +++
+ lib/sdl.mli       |   930 +++
+ lib/sdl.o         |   Bin 0 -> 47392 bytes
+ lib/sdl_stub.c    |  1415 ++++
+ lib/sdl_stub.o    |   Bin 0 -> 42176 bytes
+ lib/win.ml        |    62 +
+ lib/win.mli       |    37 +
+ lib/win_stub.c    |   166 +
+ lib/win_stub.o    |   Bin 0 -> 3124 bytes
+ 14 files changed, 36616 insertions(+)
+
+commit 6c9813aef71bdda92ec780c7d887e5480c09955d
+Author: Sophie <zingyli@gmail.com>
+Date:   Mon Nov 30 16:54:41 2015 -0500
+
+    added mli files
+
+ PActions.mli    | 13 +++++++++++++
+ PAttributes.mli | 12 ++++++++++++
+ battle.mli      | 19 +++++++++++++++++++
+ items.mli       | 14 ++++++++++++++
+ main.mli        | 12 ++++++++++++
+ pokeML.mli      | 15 +++++++++++++++
+ 6 files changed, 85 insertions(+)
+
+commit f3ee1cc5e743bb51938201fb4da6682534dd22fb
+Author: jchan3580 <jdc345@cornell.edu>
+Date:   Fri Nov 27 23:08:18 2015 -0500
+
+    Initial commit
+
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
