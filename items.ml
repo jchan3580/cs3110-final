@@ -16,7 +16,9 @@ let cook item =
 let combine item1 item2 =
   match item1.name, item2.name with
   | "flint", "wood" | "wood", "flint" ->
-            print_string "You have made a campfire!";
-            Some "campfire"
+            (print_string "You have made a campfire!";
+            Some "campfire")
+  | "campfire", _ -> cook item2
+  | _, "campfire" -> cook item1
   | _, _ -> print_string "These items cannot be combined!";
             None

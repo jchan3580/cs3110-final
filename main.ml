@@ -85,9 +85,25 @@ let parse player str room=
   else if (String.lowercase str)="quit"
        then (*Quit the game*)()
   else if (String.lowercase str)="help"
-       then (*Print help*)()
+       then (print_string "This is the help menu. Here are the possible
+commands: eat _, drop _, pick up _, use _, move _, battle _, look, stats, quit,
+help, inventory, and pokeml. Possible directions to move in include forwards,
+backwards, right, or left. In order to eat or drop something, it must be in your
+inventory. In order to pick up something, it must be in the room. The use
+command allows you to select two items and combine them for special effects! The
+battle command must be used on a pokeML in the room, and you will try to take it
+down in order to gain experience and levels. The stats command allows you to
+view your current statistics such as level, total experience, hunger, and thirst.
+Inventory allows you to view your inventory, and pokeML allows you to view your
+current pokeML. Look restates the description of the room, and quit ends the
+game. In order to beat the game, you must reach level 5, which can be
+accomplished by doing various tasks. Every command you enter will slowly
+decrease your hunger and thirst levels - should they reach 0, you will die and
+lose the game. Good luck!"())
   else if (String.lowercase str)="inventory"
-       then (*Print inventory*)()
+       then (print_string (get_items player.inventory "");())
+  else if (String.lowercase str)="pokeML"
+       then (print_string (get_pokeML player.pokeML "");())
   else (print_string "That is not a valid command!";())
 
 let main player = failwith "TODO"
