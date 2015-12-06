@@ -207,7 +207,7 @@ quantity = ref 0; consumable = Some Water}
 let cleanWater = {name = "clean water";
 description = "https://www.youtube.com/watch?v=rg3Mr6e1KMo";
 quantity = ref 0; consumable = Some CleanWater}
-(*
+
 (*pokeML*)
 let fire1_attributes = {level = ref 1; experience = ref 0;
 hp = ref (100,50); c_hp = ref 100; att = ref (2,2); def = ref (50,10)}
@@ -224,7 +224,7 @@ let fire1_moves = [fire1_move1; fire1_move2]
 
 let fire1 = {name = "Voldrag"; description = "A fire type pokeML";
 moves = fire1_moves; element = "fire"; attributes = fire1_attributes;
-quantity = ref 0; special "fire"}
+quantity = ref 0; special = "fire"}
 
 let fire2_attributes = {level = ref 1; experience = ref 0;
 hp = ref (150,100); c_hp = ref 150; att = ref (2,1); def = ref (50,20)}
@@ -241,7 +241,7 @@ let fire2_moves = [fire2_move1; fire2_move2]
 
 let fire2 = {name = "Hotstuff"; description = "A fire type pokeML";
 moves = fire2_moves; element = "fire"; attributes = fire2_attributes;
-quantity = ref 0; special "fire"}
+quantity = ref 0; special = "fire"}
 
 let fire3_attributes = {level = ref 1; experience = ref 0;
 hp = ref (100,75); c_hp = ref 100; att = ref (3,1); def = ref (40,20)}
@@ -258,7 +258,7 @@ let fire3_moves = [fire3_move1; fire3_move2]
 
 let fire3 = {name = "Mixtape"; description = "A fire type pokeML";
 moves = fire3_moves; element = "fire"; attributes = fire3_attributes;
-quantity = ref 0; special "fire"}
+quantity = ref 0; special = "fire"}
 
 let water1_attributes = {level = ref 1; experience = ref 0;
 hp = ref (100,50); c_hp = ref 100; att = ref (2,2); def = ref (50,10)}
@@ -275,7 +275,7 @@ let water1_moves = [water1_move1; water1_move2]
 
 let water1 = {name = "Seadrag"; description = "A water type pokeML";
 moves = water1_moves; element = "water"; attributes = water1_attributes;
-quantity = ref 0; special "water"}
+quantity = ref 0; special = "water"}
 
 let water2_attributes = {level = ref 1; experience = ref 0;
 hp = ref (150,100); c_hp = ref 150; att = ref (2,1); def = ref (50,20)}
@@ -292,7 +292,7 @@ let water2_moves = [water2_move1; water2_move2]
 
 let water2 = {name = "Snoop Drizzle"; description = "A water type pokeML";
 moves = water2_moves; element = "water"; attributes = water2_attributes;
-quantity = ref 0; special "water"}
+quantity = ref 0; special = "water"}
 
 let water3_attributes = {level = ref 1; experience = ref 0;
 hp = ref (100,75); c_hp = ref 100; att = ref (3,1); def = ref (40,20)}
@@ -310,10 +310,10 @@ let water3_moves = [water3_move1; water3_move2]
 
 let water3 = {name = "The Mussel"; description = "A water type pokeML";
 moves = water3_moves; element = "water"; attributes = water3_attributes;
-quantity = ref 0; special "water"}
+quantity = ref 0; special = "water"}
 
-let initial_pokeML_list = {fire1; fire2; fire3; water1; water2; water3}
-*)
+let initial_pokeML_list = [fire1; fire2; fire3; water1; water2; water3]
+
 let initial_item_list = [wood; flint; campfire; rawMeat; cookedMeat; burntMeat;
 salad; coconut; stirFry; water; cleanWater]
 
