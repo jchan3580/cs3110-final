@@ -83,7 +83,7 @@ let parse player str room=
   else if (String.lowercase str)="look"
        then ((print_string (room_description room));())
   else if (String.lowercase str)="quit"
-       then (*Quit the game*)()
+       then exit 0
   else if (String.lowercase str)="help"
        then (print_string "This is the help menu. Here are the possible
 commands: eat _, drop _, pick up _, use _, move _, battle _, look, stats, quit,
@@ -99,11 +99,66 @@ current pokeML. Look restates the description of the room, and quit ends the
 game. In order to beat the game, you must reach level 5, which can be
 accomplished by doing various tasks. Every command you enter will slowly
 decrease your hunger and thirst levels - should they reach 0, you will die and
-lose the game. Good luck!"())
+lose the game. Good luck!";())
   else if (String.lowercase str)="inventory"
        then (print_string (get_items player.inventory "");())
   else if (String.lowercase str)="pokeML"
        then (print_string (get_pokeML player.pokeML "");())
   else (print_string "That is not a valid command!";())
+
+
+
+
+let wood = {name = "wood";
+description = "A piece of wood.  You could probably make a fire with this.";
+quantity = ref 0; consumable = None}
+
+let flint = {name = "flint";
+description = "A flint for starting a fire.";
+quantity = ref 0; consumable = None}
+
+let campfire = {name = "campfire";
+description = "It's hot!"; quantity = ref 0; consumable = None}
+
+let RawMeat = {name = "raw meat";
+description = "It's not especially appetizing, but probably won't kill you.";
+quantity = ref 0; consumable = Some RawMeat}
+
+let CookedMeat = {name = "cooked meat";
+description = "At this rate you'll get your cooking skillcape in no time.";
+quantity = ref 0; consumable = Some CookedMeat}
+
+let BurntMeat = {name = "burnt meat";
+description = "Well well done.";
+quantity = ref 0; consumable = Some BurntMeat}
+
+let Salad = {name = "salad";
+description = "Wish I had some ranch.";
+quantity = ref 0; consumable = Some Salad}
+
+let Coconut = {name = "coconut";
+description = "Not as good without the chocolate and almond.";
+quantity = ref 0; consumable = Some Coconut}
+
+let StirFry = {name = "stir fry";
+description = "Jk it's actually just hot salad.";
+quantity = ref 0; consumable = Some StirFry}
+
+let Water = {name = "water";
+description = "Definitely palatable, but it's not Perrier.";
+quantity = ref 0; consumable = Some Water}
+
+let CleanWater = {name = "clean water";
+description = "https://www.youtube.com/watch?v=rg3Mr6e1KMo";
+quantity = ref 0; consumable = Some CleanWater}
+
+let initial_item_list = [wood; flint; campfire; RawMeat; CookedMeat; BurntMeat;
+Salad; Coconut; StirFry; Water; CleanWater]
+
+
+
+
+
+
 
 let main player = failwith "TODO"
