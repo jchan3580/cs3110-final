@@ -22,16 +22,20 @@ let rec battle poke1 poke2 =
   | "attack" -> (print_string "Which move would you like to select?";
                   print_move_lst poke1.moves;
                   let input = read_line () in
-                  let move1 = (find_move poke1.moves input) in
-                  let move2 = (find_ran_move poke2.moves) in
-                  attack poke1 move1 poke2;
-                  if (dead poke2) then Dead poke2
-                  else ((attack poke2 move2 poke1);
-                        if (dead poke1) then Dead poke1
-                        else battle poke1 poke2))
+                  match (find_move poke1.moves input) with
+                  | Some x -> let move2 = (find_ran_move poke2.moves) in
+                              attack poke1 x poke2;
+                              if (dead poke2) then Dead poke2
+                              else ((attack poke2 move2 poke1);
+                                    if (dead poke1) then Dead poke1
+                                    else battle poke1 poke2)
+                  | None -> (print_string "That is not a valid move.";
+                             battle poke1 poke2))
+
   | "switch" -> Switch
   | "flee" -> Flee
-  | _ -> Flee
+  | _ -> (print_string "That is not a valid command, please try again.";
+          battle poke1 poke2)
 
 (*Your list of pokeML fight a wild pokeML*)
 let rec fight lst pokeML =
