@@ -9,25 +9,26 @@ type room = {items: item list; pokeML: pokeML list}
 let rec get_items (items : item list) (accum : string) =
   match items with
   | [] -> if (String.length accum >= 2)
-  then String.sub 0 ((String.length accum) - 2) else accum
+  then String.sub accum 0 ((String.length accum) - 2) else accum
   | h::t -> if (!(h.quantity)>0)
   then get_items t (accum ^ (string_of_int !(h.quantity)) ^ (h.name) ^ ", ")
   else get_items t accum
 
 let rec get_pokeML (pokeML : pokeML list) (accum : string) =
   match pokeML with
-  | [] -> if (String.length accum >= 2)
-  then "Also, you see " ^ (String.sub 0 ((String.length accum) - 2) ^ "!"
-  else accum)
+  | [] -> (if (String.length accum >= 2)
+    then ("Also, you see " ^
+            (String.sub accum 0 ((String.length accum) - 2) ^ "!"))
+    else accum)
   | h::t -> if (!(h.quantity)>0)
   then get_pokeML t (accum ^ (string_of_int !(h.quantity)) ^ (h.name) ^ ", ")
   else get_pokeML t accum
 
 let room_description (room : room) : string =
   "You come to a clearing in the forest.  On the ground you see " ^
-  (get_items room.items "") ^ "."
+  (get_items room.items "") ^ "." ^ (get_pokeML room.pokeML "")
 
-let parse player str =
+let parse player str room=
   if (String.length str >= 4 &&
       String.sub (String.lowercase str) 0 4 = "eat ") then
     (let command = String.sub (String.lowercase str) 4
@@ -46,7 +47,7 @@ let parse player str =
       String.sub (String.lowercase str) 0 8 = "pick up ") then
     (let command = String.sub (String.lowercase str) 8
                     ((String.length (String.lowercase str))-8) in
-        match (sel_item player.inventory command) with
+        match (sel_item room.items command) with
         | Some x -> pickup_item player x
         | None -> print_string "That is not a valid item!";())
   else if (String.length str >= 4 &&
@@ -72,8 +73,15 @@ let parse player str =
     (let command = String.sub (String.lowercase str) 5
                     ((String.length (String.lowercase str))-5) in
         move player command)
+  else if (String.length str >= 7 &&
+      String.sub (String.lowercase str) 0 7 = "battle ") then
+    (let command = String.sub (String.lowercase str) 7
+                    ((String.length (String.lowercase str))-7) in
+        match (sel_pokeML room.pokeML command) with
+        | Some x -> PActions.battle player x
+        | None -> (print_string "That is not a valid pokeML!";()))
   else if (String.lowercase str)="look"
-       then (*Print description of room*)()
+       then ((print_string (room_description room));())
   else if (String.lowercase str)="quit"
        then (*Quit the game*)()
   else if (String.lowercase str)="help"

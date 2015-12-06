@@ -77,7 +77,7 @@ parsed *)
 let main player opp =
   (refreshHP (opp::player.pokeML));
   if (fight player.pokeML opp)
-  then (catchPoke player.pokeML pokeML.name;
+  then (catchPoke player.pokeML opp.name;
        (gain_exp player 100);
        (gain_xp_lst player.pokeML 50);())
   else ((gain_exp player (-50)); ())
