@@ -41,7 +41,7 @@ let consume (player : player) (i : item) : unit =
         change_thirst player (consume_thirst_helper i);
         remove_item player.inventory i.name;
         gain_exp player 5;())
-  else (print_string "You do not have that item!"; ())
+  else (print_string "\nYou do not have that item!"; ())
 
 (*uses two items together*)
 let use_item player item1 item2 =
@@ -61,7 +61,7 @@ let use_item player item1 item2 =
                  add_item player.inventory x;
                  gain_exp player 5; ()))
     | None -> ())
-  else (print_string "You do not have those items!"; ())
+  else (print_string "\nYou do not have those items!"; ())
 
 (*uses an item on an pokeML*)
 let use_pokeML player pokeML item =
@@ -72,8 +72,8 @@ let use_pokeML player pokeML item =
                    add_item player.inventory x;
                    gain_exp player 10; ())
       | None -> ())
-    else (print_string "You do not have that pokeML!"; ()))
-  else (print_string "You do not have that item!"; ())
+    else (print_string "\nYou do not have that pokeML!"; ()))
+  else (print_string "\nYou do not have that item!"; ())
 
 (*Drops an item*)
 let drop_item player item =
@@ -81,7 +81,7 @@ let drop_item player item =
   ((*SOMEHOW DROP THE ITEM ON THE GROUND*)
       remove_item player.inventory item.name;
       gain_exp player 1; ())
-  else (print_string "You do not have that item!"; ())
+  else (print_string "\nYou do not have that item!"; ())
 
 (*Pickup an item*)
 let pickup_item player item =
@@ -89,7 +89,7 @@ let pickup_item player item =
   ((*REMOVE ITEM FROM GROUND*)
       add_item player.inventory item.name;
       gain_exp player 1; ())
-  else (print_string "That item is not on the ground!"; ())
+  else (print_string "\nThat item is not on the ground!"; ())
 
 (*initiates a battle with another player or pokeML*)
 let battle player pokeML=

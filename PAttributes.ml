@@ -43,7 +43,7 @@ let rec add_pokeML inv item =
   match inv with
   | h::t -> if (h.name = item)
             then (if (!(h.quantity)>0)
-                  then (print_string "You already have this pokeML!";())
+                  then (print_string "\nYou already have this pokeML!";())
                   else ((h.quantity := 1);()))
             else add_pokeML t item
   | [] -> ()
@@ -54,7 +54,7 @@ let rec remove_item inv item =
   | h::t -> if (Items.(h.name) = item)
             then if (!(Items.(h.quantity))>0)
                  then ((Items.(h.quantity) := !Items.(h.quantity) - 1);())
-                 else (print_string "You do not have this item!"; ())
+                 else (print_string "\nYou do not have this item!"; ())
             else remove_item t item
   | [] -> ()
 

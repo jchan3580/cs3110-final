@@ -16,10 +16,10 @@ let attack poke1 move poke2 =
 
 (*two pokeML fight each other*)
 let rec battle poke1 poke2 =
-  print_string "What would you like to do?";
+  print_string "\nWhat would you like to do?";
   let command = read_line () in
   match command with
-  | "attack" -> (print_string "Which move would you like to select?";
+  | "attack" -> (print_string "\nWhich move would you like to select?";
                   print_move_lst poke1.moves;
                   let input = read_line () in
                   match (find_move poke1.moves input) with
@@ -29,21 +29,22 @@ let rec battle poke1 poke2 =
                               else ((attack poke2 move2 poke1);
                                     if (dead poke1) then Dead poke1
                                     else battle poke1 poke2)
-                  | None -> (print_string "That is not a valid move.";
+                  | None -> (print_string "\nThat is not a valid move.";
                              battle poke1 poke2))
 
   | "switch" -> Switch
   | "flee" -> Flee
-  | _ -> (print_string "That is not a valid command, please try again.";
+  | _ -> (print_string "\nThat is not a valid command, please try again.";
           battle poke1 poke2)
 
 (*Your list of pokeML fight a wild pokeML*)
 let rec fight lst pokeML =
   print_poke_lst lst;
-  print_string "Which pokeML would you like to use?";
+  print_string "\nWhich pokeML would you like to use?";
   let poke = read_line () in
   match (sel_pokeML lst poke) with
-  | Some x ->print_string x.name;
+  | Some x ->print_newline();
+             print_string x.name;
              print_string " versus ";
              print_string pokeML.name;
             (match (battle x pokeML) with
@@ -53,7 +54,7 @@ let rec fight lst pokeML =
                 else (rem_pokeML lst y;
                       let new_lst = (current_pokeML lst) in
                       if (new_lst = []) then false else fight new_lst pokeML))
-  | None -> (print_string "That is not a valid pokeML! Please try again.";
+  | None -> (print_string "\nThat is not a valid pokeML! Please try again.";
               fight lst pokeML)
 
 
@@ -64,12 +65,12 @@ let rec refreshHP lst =
   | _ -> ()
 
 let rec catchPoke inv poke=
-  print_string "Would you like to catch this pokeML?";
+  print_string "\nWould you like to catch this pokeML?";
          let input = read_line () in
         match (String.lowercase input) with
         | "yes" -> add_pokeML inv poke
         | "no" -> ()
-        | _ -> (print_string "Invalid command, please try again.";
+        | _ -> (print_string "\nInvalid command, please try again.";
                catchPoke inv poke)
 
 (*has the methods that modify the attributes according to the specific command
