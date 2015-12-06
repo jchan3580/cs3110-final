@@ -48,10 +48,18 @@ let use_item player item1 item2 =
   if ((in_inv (player.inventory) (item1.name))=true&&
     ((in_inv (player.inventory) (item2.name))=true))
   then (match (combine item1 item2) with
-    | Some x -> (remove_item player.inventory item1.name;
-                remove_item player.inventory item2.name;
-                add_item player.inventory x;
-                gain_exp player 5; ())
+    | Some x -> (if (item1.name="campfire")
+                 then (remove_item player.inventory item2.name;
+                 add_item player.inventory x;
+                 gain_exp player 5; ())
+                 else if (item2.name="campfire")
+                 then (remove_item player.inventory item1.name;
+                 add_item player.inventory x;
+                 gain_exp player 5; ())
+                 else (remove_item player.inventory item1.name;
+                 remove_item player.inventory item2.name;
+                 add_item player.inventory x;
+                 gain_exp player 5; ()))
     | None -> ())
   else (print_string "You do not have those items!"; ())
 
