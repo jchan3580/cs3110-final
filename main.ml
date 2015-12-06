@@ -4,6 +4,29 @@ open Battle
 open Items
 open PokeML
 
+type room = {items: item list; pokeML: pokeML list}
+
+let rec get_items (items : item list) (accum : string) =
+  match items with
+  | [] -> if (String.length accum >= 2)
+  then String.sub 0 ((String.length accum) - 2) else accum
+  | h::t -> if (!(h.quantity)>0)
+  then get_items t (accum ^ (string_of_int !(h.quantity)) ^ (h.name) ^ ", ")
+  else get_items t accum
+
+let rec get_pokeML (pokeML : pokeML list) (accum : string) =
+  match pokeML with
+  | [] -> if (String.length accum >= 2)
+  then "Also, you see " ^ (String.sub 0 ((String.length accum) - 2) ^ "!"
+  else accum)
+  | h::t -> if (!(h.quantity)>0)
+  then get_pokeML t (accum ^ (string_of_int !(h.quantity)) ^ (h.name) ^ ", ")
+  else get_pokeML t accum
+
+let room_description (room : room) : string =
+  "You come to a clearing in the forest.  On the ground you see " ^
+  (get_items room.items "") ^ "."
+
 let parse player str =
   if (String.length str >= 4 &&
       String.sub (String.lowercase str) 0 4 = "eat ") then
