@@ -25,7 +25,28 @@ let rec get_pokeML (pokeML : pokeML list) (accum : string) =
   else get_pokeML t accum
 
 let room_description (room : room) : string =
-  "You come to a clearing in the forest.  On the ground you see " ^
+  "
+   / \\    (  (    )     \\       \\       \\ \n
+   / \\  ( (     )   )  / \\     / \\     / \\ \n
+  \\ |   ( (         )  / \\     / \\     / \\
+ / \\    (           / ) |    \\  |  /    |        \\ \n
+ / \\    ( ( \\       )      / \\   / \\      \\    / \\ \n
+  |        ( |  // )    \\   / \\   / \\     / \\   / \\ \n
+       ,'',   |   | /   / \\   |     |/     / \\    | \n
+    /``   ''\\     / \\  / \\    /    / \\     |      \\ \n
+ {``         ''}  / \\   |/   / \\   / \\     \\     / \\ \n
+{               }  |    / \\  / \\    |     / \\    / \\   \n
+ `'`  \\ //  `'`    \\    / \\   |        /  / \\     |    \n
+       | |     /  / \\  \\ |   \\    \\   / \\  |     \\   \n
+      // \\   / \\ / \\ / \\   / \\  / \\  / \\       / \\ \n
+ / \\          / \\  |  / \\   / \\  / \\   |        / \\ \n
+ / \\     \\     |   /   |     |    |       /      | \n
+  |     / \\       / \\      \\             / \\ \n
+        / \\       / \\     / \\            / \\ \n
+         |         |      / \\             | \n
+                           | \n
+
+  You come to a clearing in the forest.  On the ground you see " ^
   (get_items room.items "") ^ "." ^ (get_pokeML room.pokeML "")
 
 let parse player str room=
@@ -99,7 +120,8 @@ current pokeML. Look restates the description of the room, and quit ends the
 game. In order to beat the game, you must reach level 5, which can be
 accomplished by doing various tasks. Every command you enter will slowly
 decrease your hunger and thirst levels - should they reach 0, you will die and
-lose the game. Good luck!";())
+lose the game. Good luck!"; print_newline ()
+
   else if (String.lowercase str)="inventory"
        then (print_string (get_items player.inventory "");())
   else if (String.lowercase str)="pokeML"
@@ -156,9 +178,30 @@ let initial_item_list = [wood; flint; campfire; RawMeat; CookedMeat; BurntMeat;
 Salad; Coconut; StirFry; Water; CleanWater]
 
 
+let input_list (input : string) : string list =
+  let has_space = String.contains input ' ' in
+  if has_space then
+    let space_ind = String.index input ' ' in
+    let sublen = (String.length input - space_ind) in
+    [String.sub input 0 space_ind; String.sub input (space_ind+1) (sublen-1)]
+  else [input]
+
+let rec main (input: string list) (p: player) : unit =
+  if !p.hunger <= 0 || !p.thirst <= 0 then print_string "Oh no, you do
+not have enough energy to continue, you died of hunger and thirst :'("; exit 0
+  else if !p.level >= 5 then print_string "CONGRADULATIONS!! You have become
+the PokeML Champion! You Win!!!"
+  parse input p
 
 
+let input = read_line () in
+let input_str_list = input_list input in
+let player = {hunger= ref 100;
+  thirst= ref 100;
+  xp= ref 0;
+  level= ref 1;
+  inventory= initial_item_list;
+  pokeML=
+  }
 
-
-
-let main player = failwith "TODO"
+main input
