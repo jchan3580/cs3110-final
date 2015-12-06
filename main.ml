@@ -108,7 +108,7 @@ lose the game. Good luck!";())
 
 
 
-
+(*items*)
 let wood = {name = "wood";
 description = "A piece of wood.  You could probably make a fire with this.";
 quantity = ref 0; consumable = None}
@@ -156,9 +156,112 @@ let initial_item_list = [wood; flint; campfire; RawMeat; CookedMeat; BurntMeat;
 Salad; Coconut; StirFry; Water; CleanWater]
 
 
+(*pokeML*)
+let fire1_attributes = {level = ref 1; experience = ref 0;
+hp = ref (100,50); c_hp = ref 100; att = ref (2,2); def = ref (50,10)}
+
+let fire1_move1 = {name1 = "claw";
+description1 = "Swipe the enemy with your claw.";
+accuracy = 70; damage = 30}
+
+let fire1_move2 = {name1 = "fire breath";
+description1 = "Burninate your enemy.";
+accuracy = 50; damage = 40}
+
+let fire1_moves = [fire1_move1; fire1_move2]
+
+let fire1 = {name = "Voldrag"; description = "A fire type pokeML";
+moves = fire1_moves; element = "fire"; attributes = fire1_attributes;
+quantity = ref 0; special "fire"}
 
 
+let fire2_attributes = {level = ref 1; experience = ref 0;
+hp = ref (150,100); c_hp = ref 150; att = ref (2,1); def = ref (50,20)}
 
+let fire2_move1 = {name1 = "fireball";
+description1 = "Shoot a fireball at your enemy.";
+accuracy = 60; damage = 30}
+
+let fire2_move2 = {name1 = "firestream";
+description1 = "Shoot a stream of fire at your enemy.";
+accuracy = 30; damage = 60}
+
+let fire2_moves = [fire2_move1; fire2_move2]
+
+let fire2 = {name = "Hotstuff"; description = "A fire type pokeML";
+moves = fire2_moves; element = "fire"; attributes = fire2_attributes;
+quantity = ref 0; special "fire"}
+
+let fire3_attributes = {level = ref 1; experience = ref 0;
+hp = ref (100,75); c_hp = ref 100; att = ref (3,1); def = ref (40,20)}
+
+let fire3_move1 = {name1 = "punch";
+description1 = "Punch your enemy.";
+accuracy = 80; damage = 30}
+
+let fire3_move2 = {name1 = "kick";
+description1 = "Kick your enemy.";
+accuracy = 60; damage = 50}
+
+let fire3_moves = [fire3_move1; fire3_move2]
+
+let fire3 = {name = "Mixtape"; description = "A fire type pokeML";
+moves = fire3_moves; element = "fire"; attributes = fire3_attributes;
+quantity = ref 0; special "fire"}
+
+let water1_attributes = {level = ref 1; experience = ref 0;
+hp = ref (100,50); c_hp = ref 100; att = ref (2,2); def = ref (50,10)}
+
+let water1_move1 = {name1 = "tail";
+description1 = "Hit the enemy with your tail.";
+accuracy = 70; damage = 30}
+
+let water1_move2 = {name1 = "water spout";
+description1 = "Blast your enemy with some water.";
+accuracy = 50; damage = 40}
+
+let water1_moves = [water1_move1; water1_move2]
+
+let water1 = {name = "Seadrag"; description = "A water type pokeML";
+moves = water1_moves; element = "water"; attributes = water1_attributes;
+quantity = ref 0; special "water"}
+
+let water2_attributes = {level = ref 1; experience = ref 0;
+hp = ref (150,100); c_hp = ref 150; att = ref (2,1); def = ref (50,20)}
+
+let water2_move1 = {name1 = "water shot";
+description1 = "Smack your enemy with a shot of water.";
+accuracy = 60; damage = 30}
+
+let water2_move2 = {name1 = "water stream";
+description1 = "Drown your enemy in a stream of water.";
+accuracy = 30; damage = 60}
+
+let water2_moves = [water2_move1; water2_move2]
+
+let water2 = {name = "Snoop Drizzle"; description = "A water type pokeML";
+moves = water2_moves; element = "water"; attributes = water2_attributes;
+quantity = ref 0; special "water"}
+
+let water3_attributes = {level = ref 1; experience = ref 0;
+hp = ref (100,75); c_hp = ref 100; att = ref (3,1); def = ref (40,20)}
+
+let water3_move1 = {name1 = "punch";
+description1 = "Punch your enemy.";
+accuracy = 80; damage = 30}
+
+let water3_move2 = {name1 = "kick";
+description1 = "Kick your enemy.";
+accuracy = 60; damage = 50}
+
+
+let water3_moves = [water3_move1; water3_move2]
+
+let water3 = {name = "The Mussel"; description = "A water type pokeML";
+moves = water3_moves; element = "water"; attributes = water3_attributes;
+quantity = ref 0; special "water"}
+
+let initial_pokeML_list = {fire1; fire2; fire3; water1; water2; water3}
 
 
 let main player = failwith "TODO"
