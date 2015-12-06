@@ -14,4 +14,6 @@ val fight : pokeML list -> pokeML -> bool
 
 val refreshHP: pokeML list -> unit
 
+val catchPoke : pokeML list -> string -> unit
+
 val main : player -> pokeML -> unit

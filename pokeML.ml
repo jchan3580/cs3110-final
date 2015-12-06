@@ -23,7 +23,7 @@ type pokeML = {name:string;
 let use_ability pokeML item =
   match pokeML.special with
   | "fire" -> cook item
-  | "water" -> if (item.name = "Water") then Some "CleanWater" else None
+  | "water" -> if (item.name = "water") then Some "clean water" else None
   | "earth" -> None
   | "air" -> None
   | _ -> None

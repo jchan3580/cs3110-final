@@ -63,12 +63,22 @@ let rec refreshHP lst =
   | h::t -> (h.attributes.c_hp := (fst !(h.attributes.hp))); refreshHP t
   | _ -> ()
 
+let rec catchPoke inv poke=
+  print_string "Would you like to catch this pokeML?";
+         let input = read_line () in
+        match (String.lowercase input) with
+        | "yes" -> add_pokeML inv poke
+        | "no" -> ()
+        | _ -> (print_string "Invalid command, please try again.";
+               catchPoke inv poke)
+
 (*has the methods that modify the attributes according to the specific command
 parsed *)
 let main player opp =
   (refreshHP (opp::player.pokeML));
   if (fight player.pokeML opp)
-  then ((gain_exp player 100);
-         (gain_xp_lst player.pokeML 50); ())
+  then (catchPoke player.pokeML pokeML.name;
+       (gain_exp player 100);
+       (gain_xp_lst player.pokeML 50);())
   else ((gain_exp player (-50)); ())
 
